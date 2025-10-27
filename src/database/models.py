@@ -22,14 +22,14 @@ class Challenge(Base):
 class ChallengeQuota(Base):
     __tablename__ = "challenge_quotas"
 
-    id = Column(Integer, primary_kay=True)
+    id = Column(Integer, primary_key=True)
     user_id = Column(String, nullable=False, unique=True)
     quota_remaining = Column(Integer, nullable=False, default=10)
     last_reset_date = Column(DateTime,default=datetime.now)
 
 Base.metadata.create_all(engine)
 
-SessionLocal = sessionmaker(autocommit=False, autoFlush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def get_db():
     db = SessionLocal()
